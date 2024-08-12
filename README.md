@@ -1,17 +1,20 @@
 # Scrapy Assignment
-This is a full-stack site <span style="color: red;font-size:20px">Backend</span> built with Node.js and Express.js stores hotel and room details. It uses PostgreSQL to manage data like hotel slug,title,host name,host email,bedroom count,guest count and amenities. The backend provides APIs to create & read this information. It ensures data is accurate and easy to query. This setup allows the frontend to display hotel and room details for users.
-
+The assignment involves developing a Scrapy project to scrape hotel property data from Trip.com and store the information in a PostgreSQL database using SQLAlchemy. The project must handle various web structures, paginate through pages, and store images in a directory with database references. Additionally, the assignment requires the implementation of random selection from specific sections of the website, ensuring comprehensive data collection and proper documentation.
 ### Technology stack
 
 As the name suggests, this repository is built on top of Scrapy & PostgreSQL, however, in the implementation detail, we will find other supporting technologies as well.
 
 ### Technology Stack
 
-As the name suggests, this repository is built on top of Node.js, Express.js & PostgreSQL, however, in the implementation detail, we will find other supporting technologies as well.
+
+As the name suggests, this repository is built by Scrapy & PostgreSQL, however, in the implementation detail, we will find other supporting technologies as well.
+
+<img src="https://img.shields.io/badge/Scrapy-%23007A8F?style=for-the-badge&logo=scrapy&logoColor=white" alt="Scrapy" width="60" height="25"/>: For web scraping to extract hotel property data from Trip.com.
 
 <img src="https://img.shields.io/badge/PostgreSQL-%2331575F?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" width="60" height="25"/>: For the database to store user information, complaints, and other relevant data.
 
-<img src="https://img.shields.io/badge/Postman-%23FF6C37?style=for-the-badge&logo=postman&logoColor=white" alt="Postman" width="60" height="25"/> : For testing API endpoints and ensuring smooth communication between frontend and backend.
+<img src="https://img.shields.io/badge/Postman-%23FF6C37?style=for-the-badge&logo=postman&logoColor=white" alt="Postman" width="60" height="25"/> : For testing API endpoints and ensuring smooth communication.
+
 
 
 
@@ -29,8 +32,8 @@ Before running the application, make sure you have the following installed:
 
 2. Go to the project directory and Create Virtual Environment
     ```
-    cd hotel_scraper
-    python3 -m venv myenv
+    cd hotel_scrapper
+    python3 -m venv venv
     source venv/bin/activate
     pip install scrapy
     ```

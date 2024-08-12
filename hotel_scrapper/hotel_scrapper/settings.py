@@ -19,11 +19,11 @@ NEWSPIDER_MODULE = "hotel_scrapper.spiders"
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
-DATABASE_URL = 'postgresql://username:password@localhost:5433/hotel_db'
+# DATABASE_URL = 'postgresql://username:password@localhost:5433/hotel_db'
 
-ITEM_PIPELINES = {
-    'myproject.pipelines.HotelPipeline': 1,
-}
+# ITEM_PIPELINES = {
+#     'hotel_scrapper.pipelines.HotelPipeline': 1,
+# }
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
