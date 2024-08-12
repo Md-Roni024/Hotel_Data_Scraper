@@ -1,21 +1,46 @@
-import scrapy
+import re
+import json
+from scrapy import Spider
+import random 
 
-class MySpider(scrapy.Spider):
-    name = 'hotel'
-    start_urls = ['https://uk.trip.com/hotels/?locale=en-GB&curr=GBP']
+class TripSpider(Spider):
+    name = 'trip'
+    start_urls = ['http://www.trip.com/hotels/']  # Update with your start URL
 
     def parse(self, response):
-        # Extract all elements with class 'recommend_box'
-        elements = response.css('.recommend_box')
+        script = response.xpath('//script[contains(., "window.IBU_HOTEL")]/text()').get()
+        
+        if script:
+            match = re.search(r'window\.IBU_HOTEL\s*=\s*(\{.*?\});', script, re.DOTALL)
+            if match:
+                ibu_hotel_data = match.group(1)
+                ibu_hotel_data = ibu_hotel_data.strip()
+                
+                try:
+                    hotel_data_dict = json.loads(ibu_hotel_data)
+                    # hotel_data_json = json.dumps(hotel_data_dict, indent=2)
+                    Translate = hotel_data_dict['translate']
+                    polular_hotel_country = Translate['key.hotel.homepage.hotelrecommendation.hotdomestichotels'].split('%')[0]
+                    polular_hotel_worldwide = Translate['key.hotel.homepage.hotelrecommendation.hotoverseashotels']
+                    polular_hotel_citiesIn = Translate['key.hotel.homepage.hotelrecommendation.hotdomesticcities'].split('%')[0]
+                    polular_hotel_cities_worldwide = Translate['key.hotel.homepage.hotelrecommendation.hotoverseascities']
+                    polular_hotel_hot5starhotels = Translate['key.hotel.homepage.hotelrecommendation.hot5starhotels']
+                    polular_hotel_hotcheaphotels = Translate['key.hotel.homepage.hotelrecommendation.hotcheaphotels']
 
-        for element in elements:
-            # Extract text or other attributes from the element
-            text = element.css('::text').get().strip()  # Extract text content
-            # If you need other attributes, e.g., href in <a> tags inside the element
-            # link = element.css('a::attr(href)').get()
+                    combined_list = [
+                        polular_hotel_country,
+                        polular_hotel_worldwide,
+                        polular_hotel_citiesIn,
+                        polular_hotel_cities_worldwide,
+                        polular_hotel_hot5starhotels,
+                        polular_hotel_hotcheaphotels
+                    ]
+                    # Randomly select 3 items from the list
+                    random_items = random.sample(combined_list, 3)
+                    print("Random:",random_items)
 
-            # Print the extracted text
-            print(text)
-
-            # Optionally, you can also yield the items
-            yield {'recommend_box_text': text}
+                except json.JSONDecodeError as e:
+                    # Handle JSON parsing errors
+                    self.log(f"Error decoding JSON: {e}")
+                    self.log("Raw data:")
+                    self.log(ibu_hotel_data)
