@@ -39,7 +39,7 @@ Before running the application, make sure you have the following installed:
 4. Run Spider
     ```
     cd hotel_scrapper
-    scrapy crawl hotel -o hotels.json
+    scrapy crawl trip -o hotels.json
 
     ```
   
