@@ -1,5 +1,22 @@
 [
-
-][
-
+{"title": "Royal Bath Hotel & Spa Bournemouth", "rating": "3.8", "location": "Near Bournemouth Pier ", "latitude": null, "longitude": null, "room_type": "Small Double Room without Window", "price": "£112", "images": []},
+{"title": "Carrington House Hotel", "rating": "3.7", "location": "Near Bournemouth Pier", "latitude": null, "longitude": null, "room_type": "Standard Twin Room", "price": "£95", "images": []},
+{"title": "Heathlands Hotel", "rating": "4.0", "location": "Near Bournemouth Pier", "latitude": null, "longitude": null, "room_type": "Standard Twin Room", "price": "£89", "images": []},
+{"title": "The Trouville Bournemouth", "rating": "3.2", "location": "Near Bournemouth Pier ", "latitude": null, "longitude": null, "room_type": "Twin Room", "price": "£99", "images": []},
+{"title": "Suncliff Hotel - Oceana Collection", "rating": "3.3", "location": "Near Bournemouth Pier", "latitude": null, "longitude": null, "room_type": "Standard Twin Room", "price": "£115", "images": []},
+{"title": "Ocean Beach Hotel & Spa - Oceana Collection", "rating": "3.5", "location": "Near Bournemouth Pier", "latitude": null, "longitude": null, "room_type": "Double Room With Sea View", "price": "£165", "images": []},
+{"title": "The Hermitage Hotel - Oceana Collection", "rating": "4.6", "location": "Near Bournemouth Pier ", "latitude": null, "longitude": null, "room_type": "Compact Double Room", "price": "£186", "images": []},
+{"title": "Hotel Miramar", "rating": "3.9", "location": "Near Bournemouth Pier ", "latitude": null, "longitude": null, "room_type": "Standard Double or Twin Room", "price": "£175", "images": []},
+{"title": "The Nici", "rating": "4.3", "location": "Near Bournemouth Pier ", "latitude": null, "longitude": null, "room_type": "Inland Cosy Room", "price": "£315", "images": []},
+{"title": "Hotel Collingwood, Sure Hotel Collection by Best Western", "rating": "4.0", "location": "Near Bournemouth Pier ", "latitude": null, "longitude": null, "room_type": "Cosy Double Room", "price": "£165", "images": []},
+{"title": "Leonardo Royal Hotel Birmingham", "rating": "4.5", "location": "Near New Street Station ", "latitude": null, "longitude": null, "room_type": "Standard Double Room", "price": "£86", "images": []},
+{"title": "Holiday Inn Express Birmingham - City Centre", "rating": "4.6", "location": "Near New Street Station", "latitude": null, "longitude": null, "room_type": "Standard Room", "price": "£80", "images": []},
+{"title": "Hampton by Hilton Birmingham Broad Street", "rating": "4.3", "location": "Near New Street Station ", "latitude": null, "longitude": null, "room_type": "Accessible Queen Room", "price": "£75", "images": []},
+{"title": "Holiday Inn Express Birmingham - Snow Hill", "rating": "4.2", "location": "Near New Street Station", "latitude": null, "longitude": null, "room_type": "Double Room", "price": "£60", "images": []},
+{"title": "Comfort Inn Birmingham", "rating": "4.0", "location": "Near New Street Station ", "latitude": null, "longitude": null, "room_type": "Twin Room", "price": "£47", "images": []},
+{"title": "EasyHotel Birmingham", "rating": "4.1", "location": "Near New Street Station ", "latitude": null, "longitude": null, "room_type": "Double Room With Window", "price": "£55", "images": []},
+{"title": "Holiday Inn Birmingham City Centre, an IHG Hotel", "rating": "4.3", "location": "Near New Street Station ", "latitude": null, "longitude": null, "room_type": "Standard Twin Room", "price": "£75", "images": []},
+{"title": "Hyatt Regency Birmingham", "rating": "4.6", "location": "Near New Street Station", "latitude": null, "longitude": null, "room_type": "Twin Room", "price": "£124", "images": []},
+{"title": "PH Hostel Birmingham", "rating": "4.1", "location": "Near New Street Station ", "latitude": null, "longitude": null, "room_type": "The Micro", "price": "£40", "images": []},
+{"title": "Ibis Birmingham New Street Station", "rating": "4.1", "location": "Near Chinese Quarter ", "latitude": null, "longitude": null, "room_type": "Twin Room", "price": "£54", "images": []}
 ]
