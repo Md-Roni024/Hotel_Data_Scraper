@@ -34,9 +34,9 @@ class TripSpider(scrapy.Spider):
                         polular_hotel_hot5starhotels,
                         polular_hotel_hotcheaphotels
                     ]
-                    self.log(f"Combined List: {combined_list}")
+                    # self.log(f"Combined List: {combined_list}")
                     random_items = random.sample(combined_list, 3)
-                    self.log(f"Random Items: {random_items}")
+                    # self.log(f"Random Items: {random_items}")
                     
                     for item in random_items:
                         self.log(f"Processing Item: {item}")
@@ -51,7 +51,7 @@ class TripSpider(scrapy.Spider):
         cities = [338, 722, 318, 1270, 706, 3194]
         if random_items in ["Popular Hotels Worldwide", "Top Luxury 5-star Hotels", "Budget-friendly Hotels Worldwide"]:
             if random_items == "Popular Hotels in ":
-                self.log("Fetching from Popular Hotels in")
+                # self.log("Fetching from Popular Hotels in")
                 random_city = random.choice(cities)
                 url = f"https://uk.trip.com/hotels/list?city={random_city}&checkin=2024/8/12&checkout=2024/08/13"
                 self.log(f"Fetching details from: {url}")
@@ -60,7 +60,7 @@ class TripSpider(scrapy.Spider):
                     callback=self.parse_hotel_details
                 )
             elif random_items == "Top Luxury 5-star Hotels":
-                self.log("Fetching from Top Luxury 5-star Hotels")
+                # self.log("Fetching from Top Luxury 5-star Hotels")
                 random_city = random.choice(cities)
                 url = f"https://uk.trip.com/hotels/list?city={random_city}&checkin=2024/8/12&checkout=2024/08/13"
                 self.log(f"Fetching details from: {url}")
@@ -70,7 +70,7 @@ class TripSpider(scrapy.Spider):
                 )
 
             else:
-                self.log("Fetching from Popular Budget-friendly Hotels Worldwide")
+                # self.log("Fetching from Popular Budget-friendly Hotels Worldwide")
                 random_city = random.choice(cities)
                 url = f"https://uk.trip.com/hotels/list?city={random_city}&checkin=2024/8/12&checkout=2024/08/13"
                 self.log(f"Fetching details from: {url}")
@@ -80,7 +80,7 @@ class TripSpider(scrapy.Spider):
                 )
 
         else:
-            self.log("Fetching from Popular Cities in")
+            # self.log("Fetching from Popular Cities in")
             random_city = random.choice(cities)
             url = f"https://uk.trip.com/hotels/list?city={random_city}&checkin=2024/8/12&checkout=2024/08/13"
             self.log(f"Fetching details from: {url}")
@@ -91,14 +91,23 @@ class TripSpider(scrapy.Spider):
 
     def parse_hotel_details(self, response):
         for hotel in response.xpath('//div[contains(@class, "hotel-info")]'):
-            title = hotel.xpath('.//span[contains(@class, "name")]/text()').get()
+            title = hotel.xpath('.//span[contains(@class, "name")]/text()').get(default='').strip()
+            rating = hotel.xpath('.//section[contains(@class, "list-card-comment")]//span[contains(@class, "real")]/text()').get(default='').strip()
+            location = hotel.xpath('.//div[contains(@class, "list-card-transport-v8")]//span[contains(@class, "trans-icon")]/following-sibling::span/text()').get(default='').strip()
+            latitude = hotel.xpath('.//meta[@itemprop="latitude"]/@content').get(default='').strip()
+            longitude = hotel.xpath('.//meta[@itemprop="longitude"]/@content').get(default='').strip()
+            room_type = hotel.xpath('.//span[contains(@class, "room-panel-roominfo-name")]/text()').get(default='').strip()
+            price_text = hotel.xpath('.//div[contains(@class, "room-panel-rt")]//div[contains(@class, "whole")]//div[contains(@class, "real")]/span/div/text()').get()
+            price = price_text.strip() if price_text else ''
+            images = hotel.xpath('.//div[contains(@class, "multi-images")]//img/@src').getall()
+            
             yield {
                 'title': title,
-                'rating': hotel.xpath('.//section[contains(@class, "list-card-comment")]//span[contains(@class, "real")]/text()').get(),
-                'location': hotel.xpath('.//div[contains(@class, "list-card-transport-v8")]//span[contains(@class, "trans-icon")]/following-sibling::span/text()').get(),
-                'latitude': hotel.xpath('.//meta[@itemprop="latitude"]/@content').get(),
-                'longitude': hotel.xpath('.//meta[@itemprop="longitude"]/@content').get(),
-                'room_type': hotel.xpath('.//span[contains(@class, "room-panel-roominfo-name")]/text()').get(),
-                'price': hotel.xpath('.//div[contains(@class, "room-panel-rt")]//div[contains(@class, "whole")]//div[contains(@class, "real")]/span/div/text()').get().strip(),
-                'images': hotel.xpath('.//div[contains(@class, "multi-images")]//img/@src').getall(),
+                'rating': rating,
+                'location': location,
+                'latitude': latitude,
+                'longitude': longitude,
+                'room_type': room_type,
+                'price': price,
+                'images': images,
             }

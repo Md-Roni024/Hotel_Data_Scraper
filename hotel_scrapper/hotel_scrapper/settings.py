@@ -1,11 +1,10 @@
-# Scrapy settings for hotel_scrapper project
-#
-# For simplicity, this file contains only settings considered important or
-# commonly used. You can find more settings consulting the documentation:
-#
-#     https://docs.scrapy.org/en/latest/topics/settings.html
-#     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+import os
+from dotenv import load_dotenv
+
+
+# Load environment variables from .env file
+load_dotenv()
+
 
 BOT_NAME = "hotel_scrapper"
 
@@ -13,17 +12,23 @@ SPIDER_MODULES = ["hotel_scrapper.spiders"]
 NEWSPIDER_MODULE = "hotel_scrapper.spiders"
 
 
-# Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "hotel_scrapper (+http://www.yourdomain.com)"
-
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
-# DATABASE_URL = 'postgresql://username:password@localhost:5433/hotel_db'
+# Retrieve environment variables
+PASSWORD = os.getenv('PASSWORD')
+HOST = os.getenv('HOST')
+DATABASE = os.getenv('DATABASE')
+USERNAME = os.getenv('DB_USER')
+PORT = os.getenv('PORT')
 
-# ITEM_PIPELINES = {
-#     'hotel_scrapper.pipelines.HotelPipeline': 1,
-# }
+
+# Construct DATABASE_URL using f-string
+DATABASE_URL = f'postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}'
+
+ITEM_PIPELINES = {
+    'hotel_scrapper.pipelines.HotelPipeline': 1,
+}
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
