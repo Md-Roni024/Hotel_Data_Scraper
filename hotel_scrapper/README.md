@@ -13,7 +13,7 @@ As the name suggests, this repository is built by Scrapy & PostgreSQL, however, 
 
 
 
-### Running the backend 
+### Running the Project
 Before running the application, make sure you have the following installed:
 
 1. Clone the project
@@ -26,9 +26,12 @@ Before running the application, make sure you have the following installed:
     cd hotel_scrapper
     python3 -m venv venv
     source venv/bin/activate
+    ```
+3. Install all dependencies
+    ```
     pip install -r requirements.txt
     ```
-3. Create a .env file then add your variables credentials as like:
+4. Create a .env file then add your variables credentials as like:
     ```
     DB_USER=Database User Name
     HOST=Hostname
@@ -36,10 +39,9 @@ Before running the application, make sure you have the following installed:
     PASSWORD=Database Password
     PORT=Database Port
     ```
-4. Run Spider
+5. Run Spider
     ```
-    cd hotel_scrapper
-    scrapy crawl trip -o hotels.json
+    scrapy crawl hotel_spider
 
     ```
   
@@ -49,18 +51,18 @@ Before running the application, make sure you have the following installed:
 
 - Hotel Deatils Table
   ```sql
-    CREATE TABLE hotel_details (
+    CREATE TABLE hotels (
         id SERIAL PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
-        address TEXT,
-        rating DECIMAL(3, 2),
+        title VARCHAR(255),
+        rating FLOAT,
         location VARCHAR(255),
-        latitude DECIMAL(9, 6),
-        longitude DECIMAL(9, 6),
+        latitude FLOAT,
+        longitude FLOAT,
         room_type VARCHAR(255),
-        price DECIMAL(10, 2),
-        image_path TEXT
+        price FLOAT,
+        image_url TEXT
     );
+
   ```
 
   

@@ -1,7 +1,7 @@
 import scrapy
 
 class HotelItem(scrapy.Item):
-    name = scrapy.Field()
+    title = scrapy.Field()
     rating = scrapy.Field()
     location = scrapy.Field()
     latitude = scrapy.Field()
