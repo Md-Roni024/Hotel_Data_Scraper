@@ -4,9 +4,6 @@ The assignment involves developing a Scrapy project to scrape hotel property dat
 
 As the name suggests, this repository is built on top of Scrapy & PostgreSQL, however, in the implementation detail, we will find other supporting technologies as well.
 
-### Technology Stack
-
-
 As the name suggests, this repository is built by Scrapy & PostgreSQL, however, in the implementation detail, we will find other supporting technologies as well.
 
 <img src="https://img.shields.io/badge/Scrapy-%23007A8F?style=for-the-badge&logo=scrapy&logoColor=white" alt="Scrapy" width="60" height="25"/>: For web scraping to extract hotel property data from Trip.com.
