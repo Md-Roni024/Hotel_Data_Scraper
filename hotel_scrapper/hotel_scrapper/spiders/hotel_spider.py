@@ -34,6 +34,7 @@ class TripSpider(scrapy.Spider):
                         polular_hotel_hot5starhotels,
                         polular_hotel_hotcheaphotels
                     ]
+                    print("Combined_List:",combined_list)
                     random_items = random.sample(combined_list, 3)    
                     for item in random_items:
                         self.log(f"Processing Item: {item}")
@@ -44,29 +45,20 @@ class TripSpider(scrapy.Spider):
                     self.log(f"Raw data: {ibu_hotel_data}")
 
     def hotelDetails(self, random_items):
-        self.log(f"Hello_2: {random_items}")
-        cities = [338, 722, 318, 1270, 706, 3194]
-        if random_items in ["Popular Hotels Worldwide", "Top Luxury 5-star Hotels", "Budget-friendly Hotels Worldwide"]:
-            if random_items == "Popular Hotels in ":
-                random_city = random.choice(cities)
-                url = f"https://uk.trip.com/hotels/list?city={random_city}&checkin=2024/8/12&checkout=2024/08/13"
-                self.log(f"Fetching details from: {url}")
-                yield scrapy.Request(
-                    url=url,
-                    callback=self.parse_hotel_details
-                )
-            elif random_items == "Top Luxury 5-star Hotels":
-                random_city = random.choice(cities)
-                url = f"https://uk.trip.com/hotels/list?city={random_city}&checkin=2024/8/12&checkout=2024/08/13"
-                self.log(f"Fetching details from: {url}")
-                yield scrapy.Request(
-                    url=url,
-                    callback=self.parse_hotel_details
-                )
-
+        # cities = [338, 722, 318, 1270, 706, 3194]
+        if random_items in ["Top Luxury 5-star Hotels", "Budget-friendly Hotels Worldwide"]:
+            if random_items == "Top Luxury 5-star Hotels":
+                cities = [338, 722, 318, 1270]
+                for city_id in cities:
+                    url = f"https://uk.trip.com/hotels/list?city={city_id}&checkin=2024/8/19&checkout=2024/08/25"
+                    self.log(f"Fetching details from: {url}")
+                    yield scrapy.Request(
+                        url=url,
+                        callback=self.parse_hotel_details
+                    )
             else:
                 random_city = random.choice(cities)
-                url = f"https://uk.trip.com/hotels/list?city={random_city}&checkin=2024/8/12&checkout=2024/08/13"
+                url = f"https://uk.trip.com/hotels/list?city={random_city}&checkin=2024/8/19&checkout=2024/08/25"
                 self.log(f"Fetching details from: {url}")
                 yield scrapy.Request(
                     url=url,
@@ -74,13 +66,42 @@ class TripSpider(scrapy.Spider):
                 )
 
         else:
-            random_city = random.choice(cities)
-            url = f"https://uk.trip.com/hotels/list?city={random_city}&checkin=2024/8/12&checkout=2024/08/13"
-            self.log(f"Fetching details from: {url}")
-            yield scrapy.Request(
-                url=url,
-                callback=self.parse_hotel_details
-            )
+            if random_items == "Popular Hotels in ":
+                cities = [338, 722, 318]
+                for city_id in cities:
+                    url = f"https://uk.trip.com/hotels/list?city={city_id}&checkin=2024/8/19&checkout=2024/08/25"
+                    self.log(f"Fetching details from: {url}")
+                    yield scrapy.Request(
+                        url=url,
+                        callback=self.parse_hotel_details
+                    )
+            elif random_items == "Popular Hotels Worldwide":
+                cities = [315, 359, 2]
+                for city_id in cities:
+                    url = f"https://uk.trip.com/hotels/list?city={city_id}&checkin=2024/8/19&checkout=2024/08/25"
+                    self.log(f"Fetching details from: {url}")
+                    yield scrapy.Request(
+                        url=url,
+                        callback=self.parse_hotel_details
+                    )
+            elif random_items == "Popular Cities in ":
+                cities = [338, 722, 318,1270,3194,706,1733,780,1289]
+                for city_id in cities:
+                    url = f"https://uk.trip.com/hotels/list?city={city_id}&checkin=2024/8/19&checkout=2024/08/25"
+                    self.log(f"Fetching details from: {url}")
+                    yield scrapy.Request(
+                        url=url,
+                        callback=self.parse_hotel_details
+                    )
+            else:
+                cities = [359, 2, 315,58,1,73,220,532,192,32]
+                for city_id in cities:
+                    url = f"https://uk.trip.com/hotels/list?city={city_id}&checkin=2024/8/19&checkout=2024/08/25"
+                    self.log(f"Fetching details from: {url}")
+                    yield scrapy.Request(
+                        url=url,
+                        callback=self.parse_hotel_details
+                    )
 
     def parse_hotel_details(self, response):
         script = response.xpath('//script[contains(., "window.IBU_HOTEL")]/text()').get()

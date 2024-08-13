@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from urllib.parse import quote_plus
 
 
 # Load environment variables from .env file
@@ -16,7 +17,7 @@ NEWSPIDER_MODULE = "hotel_scrapper.spiders"
 ROBOTSTXT_OBEY = False
 
 # Retrieve environment variables
-PASSWORD = os.getenv('PASSWORD')
+PASSWORD = quote_plus(os.getenv('PASSWORD'))
 HOST = os.getenv('HOST')
 DATABASE = os.getenv('DATABASE')
 USERNAME = os.getenv('DB_USER')

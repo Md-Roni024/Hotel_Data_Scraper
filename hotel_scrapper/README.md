@@ -23,7 +23,7 @@ Before running the application, make sure you have the following installed:
 
 2. Go to the project directory and Create Virtual Environment
     ```
-    cd hotel_scrapper
+    cd Scrapy_Assignment/hotel_scrapper
     python3 -m venv venv
     source venv/bin/activate
     ```
@@ -44,6 +44,12 @@ Before running the application, make sure you have the following installed:
     scrapy crawl hotel_spider
 
     ```
+6. Retrive data from PostgreSql table
+
+    ```
+    SELECT * FROM hotels_data;
+
+    ```
   
 
 ### Design Database Schema
@@ -51,7 +57,7 @@ Before running the application, make sure you have the following installed:
 
 - Hotel Deatils Table
   ```sql
-    CREATE TABLE hotels (
+    CREATE TABLE hotels_data (
         id SERIAL PRIMARY KEY,
         title VARCHAR(255),
         rating FLOAT,

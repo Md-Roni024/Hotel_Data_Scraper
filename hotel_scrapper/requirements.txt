@@ -1,6 +1,4 @@
 scrapy
-json
-random
 python-dotenv
 psycopg2-binary
 SQLAlchemy
