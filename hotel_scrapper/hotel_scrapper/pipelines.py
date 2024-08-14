@@ -6,7 +6,7 @@ from scrapy.utils.project import get_project_settings
 Base = declarative_base()
 
 class HotelDetails(Base):
-    __tablename__ = 'hotels_data_8'
+    __tablename__ = 'hotels_data'
     
     id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String)
