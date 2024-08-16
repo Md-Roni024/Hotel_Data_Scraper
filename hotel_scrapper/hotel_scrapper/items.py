@@ -9,3 +9,4 @@ class HotelItem(scrapy.Item):
     room_type = scrapy.Field()
     price = scrapy.Field()
     image_url = scrapy.Field()
+    image_path = Column(String)  

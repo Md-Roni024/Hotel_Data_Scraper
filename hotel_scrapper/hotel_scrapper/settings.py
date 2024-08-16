@@ -17,20 +17,20 @@ NEWSPIDER_MODULE = "hotel_scrapper.spiders"
 ROBOTSTXT_OBEY = False
 
 # Retrieve environment variables
-PASSWORD = quote_plus(os.getenv('PASSWORD'))
-HOST = os.getenv('HOST')
-DATABASE = os.getenv('DATABASE')
-USERNAME = os.getenv('DB_USER')
-PORT = os.getenv('PORT')
+PASSWORD = quote_plus(os.getenv('PASSWORD')) or 'p@stgress'
+HOST = os.getenv('HOST') or 'localhost'
+DATABASE = os.getenv('DATABASE') or 'hotel_db'
+USERNAME = os.getenv('DB_USER') or 'postgres'
+PORT = os.getenv('PORT') or '5433'
 
 
 # Construct DATABASE_URL using f-string
 DATABASE_URL = f'postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}'
 
 ITEM_PIPELINES = {
-    'hotel_scrapper.pipelines.HotelPipeline': 1,
+    'hotel_scrapper.pipelines.ImageDownloadPipeline': 100,
+    'hotel_scrapper.pipelines.HotelPipeline': 200,
 }
-
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32

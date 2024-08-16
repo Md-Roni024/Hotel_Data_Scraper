@@ -117,7 +117,7 @@ class TripSpider(scrapy.Spider):
                         for hotel in fiveStarHotels:
                             hotel_name = hotel.get('hotelName')
                             hotelAddress = hotel.get('address')
-                            image_url = hotel.get('imgUrl')
+                            image_url = "https://ak-d.tripcdn.com/images" + hotel.get('imgUrl')
                             rating = hotel.get('rating')
                             price_info = hotel.get("displayPrice",{})
                             price = price_info['price']
@@ -141,7 +141,7 @@ class TripSpider(scrapy.Spider):
                         for hotel in cheapHotels:
                             hotel_name = hotel.get('hotelName')
                             hotelAddress = hotel.get('address')
-                            image_url = hotel.get('imgUrl')
+                            image_url = "https://ak-d.tripcdn.com/images" + hotel.get('imgUrl')
                             rating = hotel.get('rating')
                             price_info = hotel.get("displayPrice",{})
                             price = price_info['price']
