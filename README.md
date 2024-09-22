@@ -1,5 +1,5 @@
-# Scrapy Assignment
-The assignment involves developing a Scrapy project to scrape hotel property data from Trip.com and store the information in a PostgreSQL database using SQLAlchemy. The project must handle various web structures, paginate through pages, and store images in a directory with database references. Additionally, the assignment requires the implementation of random selection from specific sections of the website, ensuring comprehensive data collection and proper documentation.
+# HotelDataScraper
+It's involves developing a Scrapy project to scrape hotel property data from Trip.com and store the information in a PostgreSQL database using SQLAlchemy. The project must handle various web structures, paginate through pages, and store images in a directory with database references. Additionally, the assignment requires the implementation of random selection from specific sections of the website, ensuring comprehensive data collection and proper documentation.
 ### Technology stack
 As the name suggests, this repository is built by Scrapy & PostgreSQL, however, in the implementation detail, we will find other supporting technologies as well.
 
